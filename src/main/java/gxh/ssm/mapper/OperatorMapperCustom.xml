@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="gxh.ssm.mapper.OperatorMapperCustom">
+    <select id="getAll"  resultType="gxh.ssm.po.Operator">
+        SELECT *
+        FROM operator
+    </select>
+    <!--<update id="update" parameterType="Pojo.Operator">-->
+        <!--UPDATE operator-->
+        <!--SET password = #{password}-->
+        <!--WHERE op_number = #{op_number}-->
+    <!--</update>-->
+    <!--<insert id="insert" parameterType="Pojo.Operator">-->
+        <!--INSERT INTO operator (op_number, password)-->
+        <!--VALUES (#{op_number}, #{password})-->
+    <!--</insert>-->
+    <!--<delete id="delete" parameterType="Long">-->
+        <!--DELETE FROM operator-->
+        <!--WHERE op_number = #{op_number}-->
+    <!--</delete>-->
+</mapper>
