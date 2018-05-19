@@ -223,66 +223,6 @@ public class ParksystemExample {
             addCriterion("feesScale not between", value1, value2, "feesscale");
             return (Criteria) this;
         }
-
-        public Criteria andParkamountIsNull() {
-            addCriterion("parkAmount is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andParkamountIsNotNull() {
-            addCriterion("parkAmount is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andParkamountEqualTo(Integer value) {
-            addCriterion("parkAmount =", value, "parkamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andParkamountNotEqualTo(Integer value) {
-            addCriterion("parkAmount <>", value, "parkamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andParkamountGreaterThan(Integer value) {
-            addCriterion("parkAmount >", value, "parkamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andParkamountGreaterThanOrEqualTo(Integer value) {
-            addCriterion("parkAmount >=", value, "parkamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andParkamountLessThan(Integer value) {
-            addCriterion("parkAmount <", value, "parkamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andParkamountLessThanOrEqualTo(Integer value) {
-            addCriterion("parkAmount <=", value, "parkamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andParkamountIn(List<Integer> values) {
-            addCriterion("parkAmount in", values, "parkamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andParkamountNotIn(List<Integer> values) {
-            addCriterion("parkAmount not in", values, "parkamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andParkamountBetween(Integer value1, Integer value2) {
-            addCriterion("parkAmount between", value1, value2, "parkamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andParkamountNotBetween(Integer value1, Integer value2) {
-            addCriterion("parkAmount not between", value1, value2, "parkamount");
-            return (Criteria) this;
-        }
     }
 
     public static class Criteria extends GeneratedCriteria {

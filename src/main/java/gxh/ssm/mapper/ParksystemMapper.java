@@ -10,13 +10,21 @@ public interface ParksystemMapper {
 
     int deleteByExample(ParksystemExample example);
 
+    int deleteByPrimaryKey(Integer id);
+
     int insert(Parksystem record);
 
     int insertSelective(Parksystem record);
 
     List<Parksystem> selectByExample(ParksystemExample example);
 
+    Parksystem selectByPrimaryKey(Integer id);
+
     int updateByExampleSelective(@Param("record") Parksystem record, @Param("example") ParksystemExample example);
 
     int updateByExample(@Param("record") Parksystem record, @Param("example") ParksystemExample example);
+
+    int updateByPrimaryKeySelective(Parksystem record);
+
+    int updateByPrimaryKey(Parksystem record);
 }

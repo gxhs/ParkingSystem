@@ -5,8 +5,6 @@ public class Parksystem {
 
     private Double feesscale;
 
-    private Integer parkamount;
-
     public Integer getId() {
         return id;
     }
@@ -21,13 +19,5 @@ public class Parksystem {
 
     public void setFeesscale(Double feesscale) {
         this.feesscale = feesscale;
-    }
-
-    public Integer getParkamount() {
-        return parkamount;
-    }
-
-    public void setParkamount(Integer parkamount) {
-        this.parkamount = parkamount;
     }
 }

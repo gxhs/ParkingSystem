@@ -2,9 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="gxh.ssm.mapper.ParksystemMapper" >
   <resultMap id="BaseResultMap" type="gxh.ssm.po.Parksystem" >
-    <result column="id" property="id" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="INTEGER" />
     <result column="feesScale" property="feesscale" jdbcType="DOUBLE" />
-    <result column="parkAmount" property="parkamount" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,7 +64,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, feesScale, parkAmount
+    id, feesScale
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="gxh.ssm.po.ParksystemExample" >
     select
@@ -73,7 +72,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from parksystem
+    from parksystemController
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -81,29 +80,34 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from parksystemController
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from parksystemController
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
   <delete id="deleteByExample" parameterType="gxh.ssm.po.ParksystemExample" >
-    delete from parksystem
+    delete from parksystemController
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="gxh.ssm.po.Parksystem" >
-    insert into parksystem (id, feesScale, parkAmount
-      )
-    values (#{id,jdbcType=INTEGER}, #{feesscale,jdbcType=DOUBLE}, #{parkamount,jdbcType=INTEGER}
-      )
+    insert into parksystemController (id, feesScale)
+    values (#{id,jdbcType=INTEGER}, #{feesscale,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="gxh.ssm.po.Parksystem" >
-    insert into parksystem
+    insert into parksystemController
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
       <if test="feesscale != null" >
         feesScale,
-      </if>
-      <if test="parkamount != null" >
-        parkAmount,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -113,19 +117,16 @@
       <if test="feesscale != null" >
         #{feesscale,jdbcType=DOUBLE},
       </if>
-      <if test="parkamount != null" >
-        #{parkamount,jdbcType=INTEGER},
-      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="gxh.ssm.po.ParksystemExample" resultType="java.lang.Integer" >
-    select count(*) from parksystem
+    select count(*) from parksystemController
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update parksystem
+    update parksystemController
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
@@ -133,21 +134,31 @@
       <if test="record.feesscale != null" >
         feesScale = #{record.feesscale,jdbcType=DOUBLE},
       </if>
-      <if test="record.parkamount != null" >
-        parkAmount = #{record.parkamount,jdbcType=INTEGER},
-      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update parksystem
+    update parksystemController
     set id = #{record.id,jdbcType=INTEGER},
-      feesScale = #{record.feesscale,jdbcType=DOUBLE},
-      parkAmount = #{record.parkamount,jdbcType=INTEGER}
+      feesScale = #{record.feesscale,jdbcType=DOUBLE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="gxh.ssm.po.Parksystem" >
+    update parksystemController
+    <set >
+      <if test="feesscale != null" >
+        feesScale = #{feesscale,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="gxh.ssm.po.Parksystem" >
+    update parksystemController
+    set feesScale = #{feesscale,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

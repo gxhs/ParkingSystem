@@ -17,4 +17,5 @@
     <bean id="parkrecordService" class="gxh.ssm.service.impl.ParkrecordServiceImpl"/>
     <bean id="schoolcarService" class="gxh.ssm.service.impl.SchoolcarServiceImpl"/>
     <bean id="adminService" class="gxh.ssm.service.impl.AdminServiceImpl"/>
+    <bean id="parksystemService" class="gxh.ssm.service.impl.ParksystemServiceImpl"/>
 </beans>
