@@ -21,10 +21,10 @@
 	<!-- 静态资源解析
 	包括 ：js、css、img、..
 	 -->
-	 <mvc:resources location="WebContent/js" mapping="/js/**"/>
-	 <mvc:resources location="WebContent/css/" mapping="/css/**"/>
-	<mvc:resources location="WebContent/img/" mapping="/img/**"/>
-
+	 <mvc:resources location="/WebContent/js/" mapping="/js/**"/>
+	 <mvc:resources location="/WebContent/css/" mapping="/css/**"/>
+	<mvc:resources location="/WebContent/img/" mapping="/img/**"/>
+	<mvc:default-servlet-handler />
 
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<!-- 视图解析器解析jsp解析，默认使用jstl标签，classpath下的得有jstl的包-->

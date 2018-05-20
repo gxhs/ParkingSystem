@@ -18,7 +18,7 @@
     <!-- 引入BootStrap核心js文件 -->
     <script src="js/bootstrap.min.js"></script>
 </head>
-<body background="WebContent/img/8.jpg">
+<body background="/img/8.jpg">
 
 <form class="form-horizontal" style="margin-top: 130px; margin-left: 10px;" action="${pageContext.request.contextPath }/admin/login.action">
     <div class="form-group">
