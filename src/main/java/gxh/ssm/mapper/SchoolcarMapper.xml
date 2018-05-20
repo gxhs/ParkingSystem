@@ -178,4 +178,8 @@
       name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultType="gxh.ssm.po.Schoolcar">
+    SELECT *
+    FROM schoolcar
+  </select>
 </mapper>

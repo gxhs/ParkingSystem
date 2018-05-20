@@ -35,28 +35,5 @@
         <td><a href="/WebContent/insertOperator.jsp" >增加</a></td>
     </tr>
 </table>
-校内车辆信息
-<table width="100%" border=1>
-    <tr>
-        <td>选择</td>
-        <td>编号</td>
-        <td>密码</td>
-        <td>操作</td>
-    </tr>
-    <c:forEach items="${schoolcarList }" var="schoolcarList">
-        <tr>
-            <td><input type="checkbox" name="platenumber" value="${schoolcarList.platenumber}"/></td>
-            <td>${schoolcarList.platenumber}</td>
-            <td>${schoolcarList.name}</td>
-            <td>
-                <a href="${pageContext.request.contextPath }/operator/selectByNumber.action?id=${schoolcarList.platenumber}">修改</a>
-                <a href="${pageContext.request.contextPath }/operator/delete.action?id=${schoolcarList.platenumber}">删除</a>
-            </td>
-        </tr>
-    </c:forEach>
-    <tr>
-        <td><a href="/WebContent/insertOperator.jsp" >增加</a></td>
-    </tr>
-</table>
 </body>
 </html>

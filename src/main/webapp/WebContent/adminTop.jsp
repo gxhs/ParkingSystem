@@ -15,12 +15,15 @@
 	<body>
 	<table border="0"  width="100%" height="59"
 	 cellpadding="0" cellspacing="0" bgcolor="azure">
+	 
 		<tr>
-			<td background="WebContent/img/logo.gif" width="557"></td>
-		    <td> <a href="index.jsp" target="_black">退出系统 </a> <c:if test="${!empty user }">
-		                             操作员：   ${user.username}
+			<td background="img/logo.gif" width="557"></td>		
+		    <td> <a href="index.jsp" target="_black">退出系统 </a> <c:if test="${!empty admin}">
+		                            管理员：   ${admin.username}
 		    </c:if></td>
+		    
 		</tr>
+		
 	</table>
 	</body>
 

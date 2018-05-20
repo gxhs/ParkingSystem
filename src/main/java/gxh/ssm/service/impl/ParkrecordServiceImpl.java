@@ -39,8 +39,16 @@ public class ParkrecordServiceImpl implements ParkrecordService {
     public List<Parkrecord> findListByintimeLike(String intime)throws Exception {
         return parkrecordMapperCustom.findListByintimeLike(intime);
     }
+
+    //增删改查
     @Override
     public List<Parkrecord> selectAllList() {
         return parkrecordMapperCustom.selectAllList();
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        parkrecordMapper.deleteByPrimaryKey(id);
+        return 0;
     }
 }

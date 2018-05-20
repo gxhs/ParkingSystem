@@ -1,7 +1,6 @@
 package gxh.ssm.service;
 
 import gxh.ssm.po.Schoolcar;
-import gxh.ssm.po.SchoolcarExample;
 
 import java.util.List;
 
@@ -12,4 +11,5 @@ public interface SchoolcarService {
     void insert(Schoolcar record);
     void updateByPrimaryKey(Schoolcar record);
     List<Schoolcar> selectAll();
+    Schoolcar selectByPrimaryKey(Integer id) throws Exception;
 }

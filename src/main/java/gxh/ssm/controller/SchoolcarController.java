@@ -1,5 +1,6 @@
 package gxh.ssm.controller;
 
+
 import gxh.ssm.po.Schoolcar;
 import gxh.ssm.service.SchoolcarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,36 +11,51 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/Schoolcar")
+@RequestMapping("/schoolcar")
 public class SchoolcarController {
     @Autowired
     private SchoolcarService schoolcarService;
 
     private Schoolcar schoolcar;
 
-    @RequestMapping("/selectByplatenumber")
-    public Schoolcar selectByplatenumber(String platenumber) throws Exception {
-        Schoolcar schoolcar= (Schoolcar) schoolcarService.selectByExample(platenumber);
-        return schoolcar;
+//    public Schoolcar selectSchoolcar(Model model, Integer id) throws Exception {
+//        Schoolcar schoolcar = schoolcarService.selectByPrimaryKey(id);
+//        System.out.println(schoolcar.getId());
+//        System.out.println(schoolcar.getName());
+//        System.out.println(schoolcar.getPlatenumber());
+//        return schoolcar;
+//    }
+
+    @RequestMapping("/selectByid")
+    public String selectByplatenumber(Model model, Integer id) throws Exception {
+        Schoolcar schoolcar = schoolcarService.selectByPrimaryKey(id);
+        System.out.println(schoolcar.getId());
+        System.out.println(schoolcar.getName());
+        System.out.println(schoolcar.getPlatenumber());
+        model.addAttribute("schoolcar1", schoolcar);
+        return "updateSchoolcar";
     }
    //增删改查
     @RequestMapping("selectAll")
     public String selectAll(Model model) throws Exception {
-        List<Schoolcar>schoolcarList=schoolcarService.selectByExample(null);
+        List<Schoolcar> schoolcarList=schoolcarService.selectAll();
         model.addAttribute("schoolcarList",schoolcarList);
-        return "operator";
+        return "schoolcar";
     }
     @RequestMapping("/insert")
-    public void insert(Schoolcar schoolcar){
+    public String insert(Schoolcar schoolcar){
         schoolcarService.insert(schoolcar);
+        return "redirect:/schoolcar/selectAll";
     }
     @RequestMapping("/delete")
-    public void delete(Integer id){
+    public String delete(Integer id){
         schoolcarService.deleteByPrimaryKey(id);
+        return "redirect:/schoolcar/selectAll";
 
     }
     @RequestMapping("/update")
-    public void update(Schoolcar schoolcar){
+    public String update(Schoolcar schoolcar){
         schoolcarService.updateByPrimaryKey(schoolcar);
+        return "redirect:/schoolcar/selectAll";
     }
 }

@@ -14,6 +14,12 @@ public class SchoolcarServiceImpl implements SchoolcarService {
     private SchoolcarMapper schoolcarMapper;
 
     @Override
+    public Schoolcar selectByPrimaryKey(Integer id) throws Exception {
+        Schoolcar schoolcar=schoolcarMapper.selectByPrimaryKey(id);
+        return schoolcar;
+    }
+
+    @Override
     public List<Schoolcar> selectByExample(String example)throws Exception {
         SchoolcarExample schoolcarExample=new SchoolcarExample();
         SchoolcarExample.Criteria criteria=schoolcarExample.createCriteria();
@@ -39,7 +45,7 @@ public class SchoolcarServiceImpl implements SchoolcarService {
 
     @Override
     public List<Schoolcar> selectAll() {
-        List<Schoolcar> schoolcarList=schoolcarMapper.selectByExample(null);
+        List<Schoolcar> schoolcarList=schoolcarMapper.selectAll();
         return schoolcarList;
     }
 }

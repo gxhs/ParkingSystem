@@ -12,4 +12,5 @@ public interface ParkrecordService {
     List<Parkrecord> selectByExample(String example);
     List<Parkrecord> findListByintimeLike(String intime) throws Exception;
     List<Parkrecord> selectAllList();
+    int deleteByPrimaryKey(Integer id);
 }

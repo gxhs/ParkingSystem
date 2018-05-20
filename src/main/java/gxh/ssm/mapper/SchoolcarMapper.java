@@ -27,4 +27,6 @@ public interface SchoolcarMapper {
     int updateByPrimaryKeySelective(Schoolcar record);
 
     int updateByPrimaryKey(Schoolcar record);
+
+    List<Schoolcar> selectAll();
 }

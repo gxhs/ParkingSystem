@@ -2,7 +2,9 @@ package gxh.ssm.controller;
 
 import gxh.ssm.po.IdandTime;
 import gxh.ssm.po.Parkrecord;
+import gxh.ssm.po.Parksystem;
 import gxh.ssm.service.ParkrecordService;
+import gxh.ssm.service.ParksystemSevice;
 import gxh.ssm.service.SchoolcarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,8 @@ public class ParkrecordController {
     private ParkrecordService parkrecordService;
     @Autowired
     private SchoolcarService schoolcarService;
+    @Autowired
+    private ParksystemSevice parksystemSevice;
 
     private SchoolcarController schoolcarController;
 
@@ -72,7 +76,7 @@ public class ParkrecordController {
         String time = hours + "小时" + mins + "分钟";
 //       System.out.println("小时"+hours);
         if (school(platenumber)) {
-            money = (int) (2 * (hours + 1));
+            money = (int) (select() * (hours + 1));
         } else {
             money = 0;
         }
@@ -110,21 +114,33 @@ public class ParkrecordController {
         }
         return idandTime;
     }
+    //获取停车费用
+    public Double select(){
+        Parksystem parksystem=parksystemSevice.selectByPrimaryKey(1);
+        Double b=parksystem.getFeesscale();
+        return b;
+    }
 
     //增删改查
     //停车记录表
     @RequestMapping("/showAllList")
     public String showAllList(Model model) {
-        List<Parkrecord> parkrecordAllList = parkrecordService.selectAllList();
-        model.addAttribute("parkrecordAllList", parkrecordAllList);
-        return "AdminShow";
+        List<Parkrecord> parkrecordList = parkrecordService.selectAllList();
+        model.addAttribute("parkrecordList", parkrecordList);
+        return "parkrecord";
     }
     //删除
-    public void deletedById(Integer id) {
+    @RequestMapping("/deletedById")
+    public String deletedById(Integer id) {
+        parkrecordService.deleteByPrimaryKey(id);
+        return "redirect:/ps/showAllList.action";
     }
 
     //通过车牌查询
-    public List<Parkrecord> selectByPlatenumber(String platenumber) {
-        return null;
+    @RequestMapping("/selectByPlatenumber")
+    public String selectByPlatenumber(Model model,String platenumber) {
+        List<Parkrecord> parkrecordList=parkrecordService.selectByExample(platenumber);
+        model.addAttribute("parkrecordList",parkrecordList);
+        return "parkrecord";
     }
 }
