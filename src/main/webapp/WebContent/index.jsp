@@ -6,8 +6,8 @@
 		<meta charset="UTF-8">
 		<title>后台模板测试</title>
 		<frameset rows="9%,*">
-			<frame src="/WebContent/indexTop.jsp" scrolling="No" noresize="noresize"  ></frame>
-			<frame src="/WebContent/admin.jsp" name="f1">   </frame>
+			<frame src="${pageContext.request.contextPath }/WebContent/indexTop.jsp" scrolling="No" noresize="noresize"  ></frame>
+			<frame src="${pageContext.request.contextPath }/WebContent/admin.jsp" name="f1">   </frame>
 			</frameset>
 		</frameset>
 	</head>

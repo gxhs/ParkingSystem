@@ -17,8 +17,8 @@
 	 cellpadding="0" cellspacing="0" bgcolor="azure">
 	 
 		<tr>
-			<td background="img/logo.gif" width="557"></td>		
-		    <td> <a href="index.jsp" target="_black">退出系统 </a> <c:if test="${!empty admin}">
+			<td background="${pageContext.request.contextPath }/img/logo.gif" width="557"></td>
+		    <td> <a href="${pageContext.request.contextPath }/WebContent/index.jsp" target="_black">退出系统 </a> <c:if test="${!empty admin}">
 		                            管理员：   ${admin.username}
 		    </c:if></td>
 		    

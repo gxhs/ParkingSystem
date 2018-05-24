@@ -29,7 +29,7 @@
         </tr>
     </c:forEach>
     <tr>
-        <td><a href="/WebContent/insertSchoolcar.jsp" >增加</a></td>
+        <td><a href="${pageContext.request.contextPath }//WebContent/insertSchoolcar.jsp" >增加</a></td>
     </tr>
 </table>
 </body>

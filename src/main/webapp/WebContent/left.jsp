@@ -8,7 +8,7 @@
 </head>
 <body>
 		<h5><a href="${pageContext.request.contextPath }/ps/showListByintime.action" target="f2">停车记录</a><br /><br /></h5>
-		<h5><a href="rightTwo.jsp" target="f2">入校登记</a><br /><br /></h5>
-		<h5><a href="rightThree.jsp" target="f2">出校登记</a><br /><br /></h5>
+		<h5><a href="${pageContext.request.contextPath }/WebContent/rightTwo.jsp" target="f2">入校登记</a><br /><br /></h5>
+		<h5><a href="${pageContext.request.contextPath }/WebContent/rightThree.jsp" target="f2">出校登记</a><br /><br /></h5>
 	</body>
 </html>

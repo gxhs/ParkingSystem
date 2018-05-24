@@ -9,7 +9,7 @@
 <body bgcolor="#4AA3D8">
 		<table border="0"  cellspacing="0" cellpadding="0" width="768" height="500" bgcolor="#4AA3D8">
 			<tr>
-			<td><img src="img/welcome.gif"> </td>
+			<td><img src="${pageContext.request.contextPath }/img/welcome.gif"> </td>
 			</tr>
 		</table>
 	</body>

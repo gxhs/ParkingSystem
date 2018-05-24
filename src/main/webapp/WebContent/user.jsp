@@ -26,7 +26,7 @@
 	  </style>
 	</head>
 
-<body background="img/regist_bg.jpg">
+<body background="${pageContext.request.contextPath }/WebContent/img/regist_bg.jpg">
     
 	<div>	
 	<span style="color: red">${loginInfo }</span>

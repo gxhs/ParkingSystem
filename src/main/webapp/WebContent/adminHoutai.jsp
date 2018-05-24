@@ -5,11 +5,11 @@
 
 <frameset rows="9%,*">
 			
-			<frame src="/WebContent/adminTop.jsp"  scrolling="No" noresize="noresize" > </frame>
+			<frame src="${pageContext.request.contextPath }/WebContent/adminTop.jsp"  scrolling="No" noresize="noresize" > </frame>
 			<frameset cols="12%,*">
 				
-				<frame src="/WebContent/adminleft.jsp"  name="f1"/></frame>
-				<frame src="/WebContent/rightMain.jsp" name="f2"/></frame>
+				<frame src="${pageContext.request.contextPath }/WebContent/adminleft.jsp"  name="f1"/></frame>
+				<frame src="${pageContext.request.contextPath }/WebContent/rightMain.jsp" name="f2"/></frame>
 			</frameset>
 			<!--
             	作者：gyp

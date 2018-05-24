@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<form action="/parksystem/update" method="post">
+<form action="${pageContext.request.contextPath }/parksystem/update" method="post">
     编号
     <input type="text" name="id" value="${parksystem.id}">
     金额
