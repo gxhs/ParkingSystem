@@ -44,6 +44,10 @@
         </tr>
     </c:forEach>
 </table>
+
+<form action="/ps/download" method="get">
+    <input type="submit" value="下载">
+</form>
 </body>
 </html>
 

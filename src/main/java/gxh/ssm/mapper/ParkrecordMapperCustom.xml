@@ -21,6 +21,6 @@
         SELECT * FROM parkrecord where intime LIKE '%${value}%' or outtime is null
     </select>
     <select id="selectAllList" resultType="gxh.ssm.po.Parkrecord">
-        SELECT * FROM parkrecord
+        SELECT * FROM parkrecord WHERE outTime!="null"
     </select>
 </mapper>

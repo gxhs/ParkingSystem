@@ -6,10 +6,17 @@ import gxh.ssm.po.Parksystem;
 import gxh.ssm.service.ParkrecordService;
 import gxh.ssm.service.ParksystemSevice;
 import gxh.ssm.service.SchoolcarService;
+import gxh.ssm.view.ExcelExportService;
+import gxh.ssm.view.ParkrecordExcleView;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -142,5 +149,63 @@ public class ParkrecordController {
         List<Parkrecord> parkrecordList=parkrecordService.selectByExample(platenumber);
         model.addAttribute("parkrecordList",parkrecordList);
         return "parkrecord";
+    }
+
+
+
+    @RequestMapping(value = "/download", method = RequestMethod.GET)
+    public ModelAndView export() {
+        //模型和视图
+        ModelAndView mv = new ModelAndView();
+        //Excel视图，并设置自定义导出接口
+        ParkrecordExcleView ev = new ParkrecordExcleView(exportService());
+        //文件名
+        ev.setFilename("停车记录.xls");
+        //设置SQL后台参数
+        Parkrecord parkrecord = new Parkrecord();
+        //限制1万条
+//        PageParams page = new PageParams();
+//        page.setStart(0);
+//        page.setLimit(10000);习近平新时代中国特色社会主义思想
+//        roleParams.setPageParams(page);
+        //查询
+        List<Parkrecord> parkrecordList = parkrecordService.selectAllList();
+        //加入数据模型
+        mv.addObject("parkrecordList", parkrecordList);
+        mv.setView(ev);
+        return mv;
+    }
+
+    @SuppressWarnings({ "unchecked"})
+    private ExcelExportService exportService() {
+        //使用Lambda表达式自定义导出excel规则
+        return (Map<String, Object> model, Workbook workbook) -> {
+            //获取用户列表
+            List<Parkrecord> parkrecordList = (List<Parkrecord>) model.get("parkrecordList");
+            //生成Sheet
+            Sheet sheet= workbook.createSheet("停车记录");
+            //加载标题
+            Row title = sheet.createRow(0);
+            title.createCell(0).setCellValue("编号");
+            title.createCell(1).setCellValue("操作员");
+            title.createCell(2).setCellValue("车牌号");
+            title.createCell(3).setCellValue("入校时间");
+            title.createCell(4).setCellValue("出校时间");
+            title.createCell(5).setCellValue("停车时间");
+            title.createCell(6).setCellValue("费用");
+            //便利角色列表，生成一行行的数据
+            for (int i=0; i<parkrecordList.size(); i++) {
+                Parkrecord parkrecord = parkrecordList.get(i);
+                int rowIdx = i + 1;
+                Row row = sheet.createRow(rowIdx);
+                row.createCell(0).setCellValue(parkrecord.getId());
+                row.createCell(1).setCellValue(parkrecord.getoId());
+                row.createCell(2).setCellValue(parkrecord.getPlatenumber());
+                row.createCell(3).setCellValue(parkrecord.getIntime());
+                row.createCell(4).setCellValue(parkrecord.getOuttime());
+                row.createCell(5).setCellValue(parkrecord.getTime());
+                row.createCell(6).setCellValue(parkrecord.getMoney());
+            }
+        };
     }
 }

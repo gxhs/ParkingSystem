@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" build-on-make="true" name="ParkingSystem:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/ParkingSystem_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/target/ParkingSystem</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -26,7 +26,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-jms:4.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.2.1.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-oxm:4.2.1.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-oxm:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.2.1.RELEASE" />
@@ -57,7 +57,18 @@
           <element id="library" level="project" name="Maven: org.ow2.asm:asm:6.0" />
           <element id="library" level="project" name="Maven: org.apache.ant:ant:1.9.6" />
           <element id="library" level="project" name="Maven: org.apache.ant:ant-launcher:1.9.6" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi:3.15" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-collections4:4.1" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml:3.15" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml-schemas:3.15" />
+          <element id="library" level="project" name="Maven: org.apache.xmlbeans:xmlbeans:2.6.0" />
+          <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
+          <element id="library" level="project" name="Maven: com.github.virtuald:curvesapi:1.04" />
         </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/ParkingSystem/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="ParkingSystem/web/Web" />
     </root>
