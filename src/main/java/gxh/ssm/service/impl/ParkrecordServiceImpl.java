@@ -2,9 +2,11 @@ package gxh.ssm.service.impl;
 
 import gxh.ssm.mapper.ParkrecordMapper;
 import gxh.ssm.mapper.ParkrecordMapperCustom;
+import gxh.ssm.plugin.params.PageParams;
 import gxh.ssm.po.Parkrecord;
 import gxh.ssm.po.ParkrecordExample;
 import gxh.ssm.service.ParkrecordService;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
@@ -50,5 +52,12 @@ public class ParkrecordServiceImpl implements ParkrecordService {
     public int deleteByPrimaryKey(Integer id) {
         parkrecordMapper.deleteByPrimaryKey(id);
         return 0;
+    }
+
+    @Override
+    public List<Parkrecord> selectAllListPage(int page,int size) {
+        PageParams pageParams = new PageParams();
+        pageParams.setPage(page);
+       return parkrecordMapperCustom.selectAllList(pageParams);
     }
 }

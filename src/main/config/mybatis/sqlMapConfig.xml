@@ -12,10 +12,20 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<!-- 批量扫描别名 -->
 		<package name="gxh.ssm.po"/>
 	</typeAliases>
-	<!-- 配置mapper
-	由于使用spring和mybatis的整合包进行mapper扫描，这里不需要配置了。
-	必须遵循：mapper.xml和mapper.java文件同名且在一个目录 
-	 -->
-	<!-- <mappers>
-	</mappers> -->
+
+	<plugins>
+		<plugin interceptor="gxh.ssm.plugin.PagePlugin">
+			<!--默认页码-->
+			<property name="default.page" value="1" />
+			<!--默认每条页数-->
+			<property name="default.pageSize" value="5" />
+			<!--是否启动分页插件-->
+			<property name="default.useFlag" value="true" />
+			<!--是否检查页码有效性 如果无效 抛出异常-->
+			<property name="default.checkFlag" value="false" />
+			<!--针对有order by的sql，是否去掉最后一个order by以后的语句 提高性能-->
+			<property name="default.cleanOrderBy" value="false" />
+		</plugin>
+	</plugins>
+
 </configuration>

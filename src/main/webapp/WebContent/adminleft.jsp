@@ -9,7 +9,7 @@
 <body>
 		<h5><a href="${pageContext.request.contextPath }/operator/selectAll" target="f2">操作员信息</a><br /><br /></h5>
 		<h5><a href="${pageContext.request.contextPath }/schoolcar/selectAll" target="f2">校内车主信息管理</a><br /><br /></h5>
-		<h5><a href="${pageContext.request.contextPath }/ps/showAllList" target="f2">停车记录</a><br /><br /></h5>
+		<h5><a href="${pageContext.request.contextPath }/ps/showAllList/1" target="f2">停车记录</a><br /><br /></h5>
 		<h5><a href="${pageContext.request.contextPath }/parksystem/select" target="f2">修改停车价格</a><br /><br /></h5>
 	</body>
 </html>

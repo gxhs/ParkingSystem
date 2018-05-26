@@ -6,7 +6,6 @@
     <title>Title</title>
 </head>
 <body>
-
 根据车牌号查询
 <form action="${pageContext.request.contextPath }/ps/selectByPlatenumber.action">
     <input type="text" name="platenumber">
@@ -14,9 +13,8 @@
 </form>
 
 停车记录
+<%--总行数${pageParams.totalPage}--%>
 <table width="100%" border=1>
-    <tr>
-    </tr>
     <tr>
         <td>选择</td>
         <td>编号</td>
@@ -43,8 +41,13 @@
             </td>
         </tr>
     </c:forEach>
+    <tr align="center">
+        <td colspan="9">
+            <a href="${pageContext.request.contextPath }/ps/showAllList/${page-1}" target="f2">上一页</a>
+            <a href="${pageContext.request.contextPath }/ps/showAllList/${page+1}" target="f2">下一页</a>
+        </td>
+    </tr>
 </table>
-
 <form action="/ps/download" method="get">
     <input type="submit" value="下载">
 </form>

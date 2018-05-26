@@ -20,7 +20,7 @@
             resultType="gxh.ssm.po.Parkrecord">
         SELECT * FROM parkrecord where intime LIKE '%${value}%' or outtime is null
     </select>
-    <select id="selectAllList" resultType="gxh.ssm.po.Parkrecord">
+    <select id="selectAllList" resultType="gxh.ssm.po.Parkrecord" parameterType="java.lang.String">
         SELECT * FROM parkrecord WHERE outTime!="null"
     </select>
 </mapper>

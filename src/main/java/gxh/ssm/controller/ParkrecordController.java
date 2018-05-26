@@ -1,5 +1,6 @@
 package gxh.ssm.controller;
 
+import gxh.ssm.plugin.params.PageParams;
 import gxh.ssm.po.IdandTime;
 import gxh.ssm.po.Parkrecord;
 import gxh.ssm.po.Parksystem;
@@ -8,12 +9,14 @@ import gxh.ssm.service.ParksystemSevice;
 import gxh.ssm.service.SchoolcarService;
 import gxh.ssm.view.ExcelExportService;
 import gxh.ssm.view.ParkrecordExcleView;
+import org.apache.ibatis.session.RowBounds;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -130,10 +133,16 @@ public class ParkrecordController {
 
     //增删改查
     //停车记录表
-    @RequestMapping("/showAllList")
-    public String showAllList(Model model) {
-        List<Parkrecord> parkrecordList = parkrecordService.selectAllList();
+    @RequestMapping("/showAllList/{page}")
+    public String showAllList(Model model,@PathVariable("page") int page) {
+        //分页
+        int size=5;
+        List<Parkrecord> parkrecordList = parkrecordService.selectAllListPage(page,size);
+        PageParams pageParams=new PageParams();
+        System.out.println(pageParams);
+        System.out.println(parkrecordList.size());
         model.addAttribute("parkrecordList", parkrecordList);
+        model.addAttribute("page", page);
         return "parkrecord";
     }
     //删除

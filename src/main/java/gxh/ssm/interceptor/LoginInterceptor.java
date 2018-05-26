@@ -32,7 +32,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 			return true;
 		}
 		//执行这里表示用户身份需要认证，跳转登陆页面
-		System.out.println(33333);
 		request.getRequestDispatcher("/WebContent/index.jsp").forward(request, response);
 		//return false表示拦截，不向下执行
 		//return true表示放行

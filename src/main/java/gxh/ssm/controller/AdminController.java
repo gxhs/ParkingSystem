@@ -19,11 +19,9 @@ public class AdminController {
         Admin admin=adminService.selectByExample(name);
         if (admin.getName().equals(name)&&admin.getPassword().equals(password)) {
                 session.setAttribute("adminName", name);
-            System.out.println(1111111);
                 //return "redirect:/operator/selectAll";
             return "adminHoutai";
             }
-        System.out.println(22222);
         return "admin";
     }
 }
