@@ -89,6 +89,8 @@ public class ParkrecordController {
         long mins = temp2 / 1000 / 60;                    //相差分钟数
         String time = hours + "小时" + mins + "分钟";
         if (school(platenumber)) {
+//            if(hours>10)
+//                hours=9;
             money = (int) (select() * (hours + 1));
         } else {
             money = 0;
@@ -105,7 +107,6 @@ public class ParkrecordController {
     }
 
     //判断是否为校内车辆
-
     public boolean school(String platenumber) throws Exception {
         if (schoolcarService.selectByExample(platenumber) != null) {
             return true;
@@ -149,12 +150,17 @@ public class ParkrecordController {
         model.addAttribute("page", page);
         return "parkrecord";
     }
-
+    @RequestMapping("/showAllListDelete")
+    public String showAllListDelete(Model model) {
+        List<Parkrecord> parkrecordList = parkrecordService.selectAllList();
+        model.addAttribute("parkrecordList", parkrecordList);
+        return "parkrecord";
+    }
     //删除
     @RequestMapping("/deletedById")
     public String deletedById(Integer id) {
         parkrecordService.deleteByPrimaryKey(id);
-        return "redirect:/ps/showAllList.action";
+        return "redirect:/ps/showAllListDelete.action";
     }
 
     //通过车牌查询
