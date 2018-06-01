@@ -4,10 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta charset="UTF-8">
-		<title>后台模板测试</title>
+		<title>首页</title>
 		<frameset rows="9%,*">
 			<frame src="${pageContext.request.contextPath }/WebContent/indexTop.jsp" scrolling="No" noresize="noresize"  ></frame>
-			<frame src="${pageContext.request.contextPath }/WebContent/admin.jsp" name="f1">   </frame>
+			<frame src="img/8.jpg" >   </frame>
 			</frameset>
 		</frameset>
 	</head>

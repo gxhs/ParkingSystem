@@ -12,18 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ParksystemController {
 
     @Autowired
-    private  ParksystemSevice parksystemService;
+    private ParksystemSevice parksystemService;
 
+    //更新停车费率
     @RequestMapping("/update")
-   public String updateByPrimaryKey(Parksystem record){
+    public String updateByPrimaryKey(Parksystem record) {
         parksystemService.updateByPrimaryKey(record);
         return "redirect:/parksystem/select";
     }
+    //查看停车费率
     @RequestMapping("/select")
-    public String selectByPrimaryKey(Model model){
-        System.out.println(88888888);
-        Parksystem parksystem =parksystemService.selectByPrimaryKey(1);
-        model.addAttribute("parksystem",parksystem);
+    public String selectByPrimaryKey(Model model) {
+        Parksystem parksystem = parksystemService.selectByPrimaryKey(1);
+        model.addAttribute("parksystem", parksystem);
         return "parksystem";
     }
 }

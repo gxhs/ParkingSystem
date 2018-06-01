@@ -16,8 +16,8 @@
 	<table border="0"  width="100%" height="59"
 	 cellpadding="0" cellspacing="0" bgcolor="azure">
 		<tr>
-			<td background="${pageContext.request.contextPath }/WebContent/img/logo.gif" width="557"></td>
-		    <td> <a href="${pageContext.request.contextPath }/WebContent/index.jsp" target="_black">退出系统 </a> <c:if test="${!empty user }">
+			<td background="${pageContext.request.contextPath }/WebContent/img/lg.jpg" width="557"></td>
+		    <td> <a href="${pageContext.request.contextPath }/WebContent/index.jsp" target="_black" style="text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退出系统 </a> <c:if test="${!empty user }">
 		                             操作员：   ${user.username}
 		    </c:if></td>
 		</tr>

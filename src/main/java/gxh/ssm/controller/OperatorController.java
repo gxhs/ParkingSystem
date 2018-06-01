@@ -38,7 +38,6 @@ public class OperatorController {
         model.addAttribute("operatorList", operatorList);
         return "operator";
     }
-
     @RequestMapping("/insert")
     public String insert(Operator operator) {
         operatorService.insert(operator);
@@ -49,14 +48,12 @@ public class OperatorController {
         operatorService.deleteByPrimaryKey(id);
         return "redirect:/operator/selectAll";
     }
-
     @RequestMapping("/update")
     public String update(Operator operator) {
         //System.out.println(111111);
         operatorService.updateByPrimaryKey(operator);
         return "redirect:/operator/selectAll";
     }
-
     @RequestMapping("selectByNumber")
     public String selectByNumber(Model model,
                                  @RequestParam(value = "id", required = true) Integer opNumber) {

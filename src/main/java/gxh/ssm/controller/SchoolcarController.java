@@ -35,26 +35,26 @@ public class SchoolcarController {
         model.addAttribute("schoolcar1", schoolcar);
         return "updateSchoolcar";
     }
-   //增删改查
+
+    //增删改查
     @RequestMapping("selectAll")
     public String selectAll(Model model) throws Exception {
-        List<Schoolcar> schoolcarList=schoolcarService.selectAll();
-        model.addAttribute("schoolcarList",schoolcarList);
+        List<Schoolcar> schoolcarList = schoolcarService.selectAll();
+        model.addAttribute("schoolcarList", schoolcarList);
         return "schoolcar";
     }
     @RequestMapping("/insert")
-    public String insert(Schoolcar schoolcar){
+    public String insert(Schoolcar schoolcar) {
         schoolcarService.insert(schoolcar);
         return "redirect:/schoolcar/selectAll";
     }
     @RequestMapping("/delete")
-    public String delete(Integer id){
+    public String delete(Integer id) {
         schoolcarService.deleteByPrimaryKey(id);
         return "redirect:/schoolcar/selectAll";
-
     }
     @RequestMapping("/update")
-    public String update(Schoolcar schoolcar){
+    public String update(Schoolcar schoolcar) {
         schoolcarService.updateByPrimaryKey(schoolcar);
         return "redirect:/schoolcar/selectAll";
     }

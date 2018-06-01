@@ -7,11 +7,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+    <!-- 引入Bootstrap核心样式文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入jQuery核心js文件 -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <!-- 引入BootStrap核心js文件 -->
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-<table border="10">
+<div class="container" >
+    <div class="row">
+        <div class="col-sm-10">
+            <table class="table table-hover ">
     <tr>
-        <td>选择</td>
         <td>操作员编号</td>
         <td>车牌号</td>
         <td>进入时间</td>
@@ -21,16 +29,17 @@
     </tr>
     <c:forEach items="${parkrecordList}" var="prrkrecord">
         <tr>
-            <td><input type="checkbox" name="prrkrecord_id" value="${prrkrecord.id}"/></td>
             <td>${prrkrecord.oId}</td>
             <td>${prrkrecord.platenumber}</td>
             <td><fmt:formatDate value="${prrkrecord.intime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
             <td><fmt:formatDate value="${prrkrecord.outtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
             <td>${prrkrecord.time}</td>
             <td>${prrkrecord.money}</td>
-                <%--<td><a href="${pageContext.request.contextPath }/items/editItems.action?id=${item.id}">修改</a></td>--%>
         </tr>
     </c:forEach>
 </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>

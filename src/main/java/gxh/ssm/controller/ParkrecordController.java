@@ -23,7 +23,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -52,55 +55,57 @@ public class ParkrecordController {
         model.addAttribute("parkrecordList", parkrecordList);
         return "/right";
     }
+
     @RequestMapping("/inSchool")
     //车辆入校
-    public String InSchool(HttpServletRequest request, String platenumber) {
+    public String InSchool(Model model, HttpServletRequest request, String platenumber) throws IOException {
         HttpSession session = request.getSession();
         Integer o_id = (Integer) session.getAttribute("opNumber");
         //获取当前时间
         Timestamp intime = new Timestamp(System.currentTimeMillis());
-
         Parkrecord parkrecord = new Parkrecord();
-
         parkrecord.setoId(o_id);
         parkrecord.setPlatenumber(platenumber);
         parkrecord.setIntime(intime);
         parkrecordService.insertSelective(parkrecord);
-        return "redirect:showListByintime.action";
+        List<Parkrecord> parkrecordList1 = parkrecordService.selectByExample(platenumber);
+        System.out.println(parkrecordList1.size());
+        model.addAttribute("parkrecordList1", parkrecordList1);
+        return "rightTwo";
     }
 
     @RequestMapping("/outSchool")
     //车辆出校
-    public String OutSchool(HttpServletRequest request, String platenumber) throws Exception {
+    public String OutSchool(Model model,HttpServletRequest request, String platenumber) throws Exception {
         //时间
         Timestamp outtime = new Timestamp(System.currentTimeMillis());
         IdandTime idandTime = parkrecordId(platenumber);
         Date intime = idandTime.getTime();
         Integer id = idandTime.getId();
-//       System.out.println(intime);
         int money;
         long temp = outtime.getTime() - intime.getTime();    //相差毫秒数
         long hours = temp / 1000 / 3600;                //相差小时数
         long temp2 = temp % (1000 * 3600);
         long mins = temp2 / 1000 / 60;                    //相差分钟数
         String time = hours + "小时" + mins + "分钟";
-//       System.out.println("小时"+hours);
         if (school(platenumber)) {
             money = (int) (select() * (hours + 1));
         } else {
             money = 0;
         }
-        //System.out.println(money);
         Parkrecord parkrecord = new Parkrecord();
         parkrecord.setId(id);
         parkrecord.setOuttime(outtime);
         parkrecord.setTime(time);
         parkrecord.setMoney(money);
         parkrecordService.updateByPrimaryKeySelective(parkrecord);
-        return "redirect:showListByintime.action";
+        List<Parkrecord> parkrecordList2=parkrecordService.selectByExample(platenumber);
+        model.addAttribute("parkrecordList2",parkrecordList2);
+        return "rightThree";
     }
 
     //判断是否为校内车辆
+
     public boolean school(String platenumber) throws Exception {
         if (schoolcarService.selectByExample(platenumber) != null) {
             return true;
@@ -124,27 +129,27 @@ public class ParkrecordController {
         }
         return idandTime;
     }
+
     //获取停车费用
-    public Double select(){
-        Parksystem parksystem=parksystemSevice.selectByPrimaryKey(1);
-        Double b=parksystem.getFeesscale();
+    public Double select() {
+        Parksystem parksystem = parksystemSevice.selectByPrimaryKey(1);
+        Double b = parksystem.getFeesscale();
         return b;
     }
 
     //增删改查
     //停车记录表
     @RequestMapping("/showAllList/{page}")
-    public String showAllList(Model model,@PathVariable("page") int page) {
+    public String showAllList(Model model, @PathVariable("page") int page) {
         //分页
-        int size=5;
-        List<Parkrecord> parkrecordList = parkrecordService.selectAllListPage(page,size);
-        PageParams pageParams=new PageParams();
-        System.out.println(pageParams);
-        System.out.println(parkrecordList.size());
+        int size = 5;
+        List<Parkrecord> parkrecordList = parkrecordService.selectAllListPage(page, size);
+        PageParams pageParams = new PageParams();
         model.addAttribute("parkrecordList", parkrecordList);
         model.addAttribute("page", page);
         return "parkrecord";
     }
+
     //删除
     @RequestMapping("/deletedById")
     public String deletedById(Integer id) {
@@ -154,12 +159,11 @@ public class ParkrecordController {
 
     //通过车牌查询
     @RequestMapping("/selectByPlatenumber")
-    public String selectByPlatenumber(Model model,String platenumber) {
-        List<Parkrecord> parkrecordList=parkrecordService.selectByExample(platenumber);
-        model.addAttribute("parkrecordList",parkrecordList);
+    public String selectByPlatenumber(Model model, String platenumber) {
+        List<Parkrecord> parkrecordList = parkrecordService.selectByExample(platenumber);
+        model.addAttribute("parkrecordList", parkrecordList);
         return "parkrecord";
     }
-
 
 
     @RequestMapping(value = "/download", method = RequestMethod.GET)
@@ -185,14 +189,14 @@ public class ParkrecordController {
         return mv;
     }
 
-    @SuppressWarnings({ "unchecked"})
+    @SuppressWarnings({"unchecked"})
     private ExcelExportService exportService() {
         //使用Lambda表达式自定义导出excel规则
         return (Map<String, Object> model, Workbook workbook) -> {
             //获取用户列表
             List<Parkrecord> parkrecordList = (List<Parkrecord>) model.get("parkrecordList");
             //生成Sheet
-            Sheet sheet= workbook.createSheet("停车记录");
+            Sheet sheet = workbook.createSheet("停车记录");
             //加载标题
             Row title = sheet.createRow(0);
             title.createCell(0).setCellValue("编号");
@@ -203,7 +207,7 @@ public class ParkrecordController {
             title.createCell(5).setCellValue("停车时间");
             title.createCell(6).setCellValue("费用");
             //便利角色列表，生成一行行的数据
-            for (int i=0; i<parkrecordList.size(); i++) {
+            for (int i = 0; i < parkrecordList.size(); i++) {
                 Parkrecord parkrecord = parkrecordList.get(i);
                 int rowIdx = i + 1;
                 Row row = sheet.createRow(rowIdx);

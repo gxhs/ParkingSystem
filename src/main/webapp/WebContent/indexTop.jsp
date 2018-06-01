@@ -15,11 +15,11 @@
 	<body>
 	<table border="0"  width="100%" height="59" cellpadding="0" cellspacing="0" bgcolor="azure">
 		<tr>
-			<td background="${pageContext.request.contextPath }/WebContent/img/logo.gif" width="557"></td>
-		    <td> <a href="${pageContext.request.contextPath }/WebContent/admin.jsp" target="_black" style="text-decoration:none;">管理员登录</a></td>
+			<td background="img/lg.jpg" width="557"></td>
+		    <td> <a href="${pageContext.request.contextPath }/WebContent/admin.jsp" target="_black" style="text-decoration:none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理员登录</a></td>
 		    <td> <a href="${pageContext.request.contextPath }/WebContent/user.jsp" target="_black" style="text-decoration:none;">操作员登录</a> </td>
-		</tr>
-	</table>
+	</table>		</tr>
+
 	</body>
 
 </html>
