@@ -7,14 +7,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Insert title here</title>
-
+    <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入jQuery核心js文件 -->
+    <script src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
+    <!-- 引入BootStrap核心js文件 -->
+    <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>进校</h1><link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
-<!-- 引入jQuery核心js文件 -->
-<script src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
-<!-- 引入BootStrap核心js文件 -->
-<script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+<h1>进校</h1>
 <form action="${pageContext.request.contextPath }/ps/inSchool.action " method="post">
     <input type="text" name="platenumber">
     <input type="submit" value="入校"/>

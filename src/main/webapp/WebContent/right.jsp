@@ -5,20 +5,20 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>Insert title here</title>
     <!-- 引入Bootstrap核心样式文件 -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
     <!-- 引入jQuery核心js文件 -->
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <!-- 引入BootStrap核心js文件 -->
-    <script src="js/bootstrap.min.js"></script>
+   <script src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
+    <%--<!-- 引入BootStrap核心js文件 -->--%>
+ <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container" >
     <div class="row">
         <div class="col-sm-10">
-            <table class="table table-hover ">
+            <table class="table table-striped" align="center">
     <tr>
         <td>操作员编号</td>
         <td>车牌号</td>

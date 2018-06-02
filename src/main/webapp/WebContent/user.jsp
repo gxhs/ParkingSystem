@@ -9,7 +9,7 @@
 		<!--设置视口的宽度(值为设备的理想宽度)，页面初始缩放值<理想宽度/可见宽度>-->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-		<title>Bootstrap基本模板</title>
+		<title></title>
 		<!-- 引入Bootstrap核心样式文件 -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
         <!-- 引入jQuery核心js文件 -->

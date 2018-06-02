@@ -4,11 +4,19 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入jQuery核心js文件 -->
+    <script src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
+    <!-- 引入BootStrap核心js文件 -->
+    <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-校内车辆信息
-<table width="100%" border=1>
+<center><h3>校内车辆信息</h3></center>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10">
+            <table class="table table-hover">
     <tr>
         <td>选择</td>
         <td>编号</td>
@@ -32,5 +40,8 @@
         <td><a href="${pageContext.request.contextPath }/WebContent/insertSchoolcar.jsp" >增加</a></td>
     </tr>
 </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>
