@@ -32,8 +32,7 @@
 	<span style="color: red">${loginInfo }</span>
 	</div>
    
-	<form class="form-horizontal" style="margin-top: 200px; margin-left: 900px;"
-	action="${pageContext.request.contextPath }/operator/login.action" method="post" id="form1">
+	<form class="form-horizontal" style="margin-top: 200px; margin-left: 900px;" action="${pageContext.request.contextPath }/operator/login.action" method="post" id="form1">
     <h3 style="color: white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作员登录</h3>
   <div class="form-group">
     <label for="username" class="col-sm-3 control-label"style="color: white"><h4>用户名</h4></label>

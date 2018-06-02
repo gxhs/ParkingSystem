@@ -22,6 +22,6 @@ public class AdminController {
                 //return "redirect:/operator/selectAll";
             return "adminHoutai";
             }
-        return "admin";
+        return "index";
     }
 }

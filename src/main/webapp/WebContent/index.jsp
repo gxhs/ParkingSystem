@@ -7,7 +7,7 @@
 		<title>首页</title>
 		<frameset rows="9%,*">
 			<frame src="${pageContext.request.contextPath }/WebContent/indexTop.jsp" scrolling="No" noresize="noresize"  ></frame>
-			<frame src="img/8.jpg" >   </frame>
+			<frame src="${pageContext.request.contextPath }/img/8.jpg" >   </frame>
 			</frameset>
 		</frameset>
 	</head>
