@@ -16,7 +16,7 @@ public interface SchoolcarMapper {
 
     int insertSelective(Schoolcar record);
 
-    List<Schoolcar> selectByExample(SchoolcarExample example);
+    Schoolcar selectByExample(SchoolcarExample example);
 
     Schoolcar selectByPrimaryKey(Integer id);
 
@@ -29,4 +29,5 @@ public interface SchoolcarMapper {
     int updateByPrimaryKey(Schoolcar record);
 
     List<Schoolcar> selectAll();
+     Schoolcar selectByp(String p);
 }

@@ -182,4 +182,9 @@
     SELECT *
     FROM schoolcar
   </select>
+  <select id="selectByp" resultType="gxh.ssm.po.Schoolcar" parameterType="string">
+    SELECT *
+    FROM schoolcar
+    WHERE plateNumber=#{plateNumber}
+  </select>
 </mapper>

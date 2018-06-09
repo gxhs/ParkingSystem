@@ -4,6 +4,7 @@ import gxh.ssm.plugin.params.PageParams;
 import gxh.ssm.po.IdandTime;
 import gxh.ssm.po.Parkrecord;
 import gxh.ssm.po.Parksystem;
+import gxh.ssm.po.Schoolcar;
 import gxh.ssm.service.ParkrecordService;
 import gxh.ssm.service.ParksystemSevice;
 import gxh.ssm.service.SchoolcarService;
@@ -76,7 +77,7 @@ public class ParkrecordController {
 
     @RequestMapping("/outSchool")
     //车辆出校
-    public String OutSchool(Model model,HttpServletRequest request, String platenumber) throws Exception {
+    public String OutSchool(Model model, HttpServletRequest request, String platenumber) throws Exception {
         //时间
         Timestamp outtime = new Timestamp(System.currentTimeMillis());
         IdandTime idandTime = parkrecordId(platenumber);
@@ -87,33 +88,33 @@ public class ParkrecordController {
         long hours = temp / 1000 / 3600;                //相差小时数
         long temp2 = temp % (1000 * 3600);
         long mins = temp2 / 1000 / 60;                    //相差分钟数
-        String time = hours + "小时" + mins + "分钟";
+        System.out.println(school(platenumber));
+        String time = hours + "hour" + mins + "min";
         if (school(platenumber)) {
-//            if(hours>10)
-//                hours=9;
-            money = (int) (select() * (hours + 1));
+            money =0;
         } else {
-            money = 0;
+            money =(int) (select() * (hours + 1));
         }
+        System.out.println("金钱"+money);
         Parkrecord parkrecord = new Parkrecord();
         parkrecord.setId(id);
         parkrecord.setOuttime(outtime);
         parkrecord.setTime(time);
         parkrecord.setMoney(money);
         parkrecordService.updateByPrimaryKeySelective(parkrecord);
-        List<Parkrecord> parkrecordList2=parkrecordService.selectByExample(platenumber);
-        model.addAttribute("parkrecordList2",parkrecordList2);
+        List<Parkrecord> parkrecordList2 = parkrecordService.selectByExample(platenumber);
+        model.addAttribute("parkrecordList2", parkrecordList2);
         return "rightThree";
     }
 
     //判断是否为校内车辆
     public boolean school(String platenumber) throws Exception {
-        if (schoolcarService.selectByExample(platenumber) != null) {
-            return true;
-        } else
+        Schoolcar schoolcar=schoolcarService.selectByp(platenumber);
+        if (schoolcar== null) {
             return false;
+        } else
+            return true;
     }
-
     //获取进入校园的车辆的id和进入时间
     public IdandTime parkrecordId(String platenumber) {
         IdandTime idandTime = new IdandTime();
@@ -150,12 +151,14 @@ public class ParkrecordController {
         model.addAttribute("page", page);
         return "parkrecord";
     }
+
     @RequestMapping("/showAllListDelete")
     public String showAllListDelete(Model model) {
         List<Parkrecord> parkrecordList = parkrecordService.selectAllList();
         model.addAttribute("parkrecordList", parkrecordList);
         return "parkrecord";
     }
+
     //删除
     @RequestMapping("/deletedById")
     public String deletedById(Integer id) {

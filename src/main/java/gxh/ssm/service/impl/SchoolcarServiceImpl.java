@@ -20,11 +20,20 @@ public class SchoolcarServiceImpl implements SchoolcarService {
     }
 
     @Override
-    public List<Schoolcar> selectByExample(String example)throws Exception {
+    public Schoolcar selectByExample(String example)throws Exception {
         SchoolcarExample schoolcarExample=new SchoolcarExample();
         SchoolcarExample.Criteria criteria=schoolcarExample.createCriteria();
         criteria.andPlatenumberEqualTo("example");
-        return  schoolcarMapper.selectByExample(schoolcarExample);
+        Schoolcar schoolcar=schoolcarMapper.selectByExample(schoolcarExample);
+        System.out.println(schoolcar.getPlatenumber());
+        return schoolcar;
+    }
+
+    @Override
+    public Schoolcar selectByp(String p) {
+        Schoolcar schoolcar=schoolcarMapper.selectByp(p);
+//        System.out.println(schoolcar.getPlatenumber());
+        return schoolcar;
     }
 
     @Override

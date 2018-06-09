@@ -11,7 +11,7 @@
       	body{
 	         margin:0px;
 }
-      </style>   
+      </style>
 	<body>
 	<table border="0"  width="100%" height="59" cellpadding="0" cellspacing="0" bgcolor="azure">
 		<tr>
